@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CoursesApp</string>
+    <string name="title_activity_main">CoursesApp</string>
+    <string name="package_name">com.steph.courses</string>
+    <string name="custom_url_scheme">com.steph.courses</string>
+</resources>

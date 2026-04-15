@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mes Courses</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4CAF50">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Écran de connexion -->
+<div id="loginScreen" class="screen active">
+  <div class="login-card">
+    <div class="logo">🛒</div>
+    <h1>Mes Courses</h1>
+    <p class="subtitle">Partagez votre liste en famille</p>
+
+    <!-- Section auth (email + mot de passe) -->
+    <div id="authSection" class="login-form" style="display:flex;flex-direction:column;gap:12px">
+      <input type="text" id="pseudoInput" placeholder="Votre prénom" maxlength="20" autocomplete="off">
+      <input type="email" id="emailInput" placeholder="Email" autocomplete="email">
+      <input type="password" id="passwordInput" placeholder="Mot de passe" autocomplete="current-password">
+      <p id="authError" class="auth-error"></p>
+      <button class="btn-primary" id="signupBtn">✨ Créer un compte</button>
+      <div class="or">déjà inscrit ?</div>
+      <button class="btn-secondary" id="signinBtn">🔑 Se connecter</button>
+    </div>
+
+    <!-- Section choix liste (après connexion) -->
+    <div id="listSection" class="login-form" style="display:none;flex-direction:column;gap:12px">
+      <p id="loggedInfo" class="logged-info"></p>
+      <input type="text" id="pseudoInput2" placeholder="Votre prénom" maxlength="20" autocomplete="off" style="display:none">
+      <button class="btn-primary" id="createListBtn">✨ Créer une nouvelle liste</button>
+      <div class="or">ou rejoindre une liste existante</div>
+      <div class="join-row">
+        <input type="text" id="codeInput" placeholder="Code (ex: ABC123)" maxlength="6" autocomplete="off" style="text-transform:uppercase">
+        <button class="btn-secondary" id="joinListBtn">Rejoindre →</button>
+      </div>
+      <button class="btn-ghost" id="logoutAuthBtn">Se déconnecter</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Écran principal -->
+<div id="appScreen" class="screen">
+  <header>
+    <div class="header-top">
+      <h1>🛒 Mes Courses</h1>
+      <div class="header-right">
+        <span id="onlineIndicator" class="online-dot" title="Connecté"></span>
+        <button id="shareBtn" class="btn-icon" title="Partager">📤</button>
+        <button id="logoutBtn" class="btn-icon" title="Changer de liste">⚙️</button>
+      </div>
+    </div>
+    <div id="listInfo" class="list-info"></div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="frigo">🧊 Frigo</button>
+    <button class="tab" data-tab="courses">🛒 Courses</button>
+  </div>
+
+  <div class="input-zone">
+    <input type="text" id="itemInput" placeholder="Ajouter un produit...">
+    <button id="addBtn">+</button>
+  </div>
+
+  <ul id="list"></ul>
+
+  <div id="emptyState" class="empty-state" style="display:none">
+    <span id="emptyEmoji">🧊</span>
+    <p id="emptyText">Vide !</p>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+<!-- Modal partage -->
+<div id="shareModal" class="modal" style="display:none">
+  <div class="modal-card">
+    <h2>📤 Partager la liste</h2>
+    <p>Code de la liste :</p>
+    <div class="code-display" id="shareCode"></div>
+    <p class="share-hint">Partagez ce code à vos proches pour rejoindre la même liste en temps réel.</p>
+    <button class="btn-primary" id="copyCodeBtn">📋 Copier le code</button>
+    <button class="btn-ghost" id="closeModalBtn">Fermer</button>
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
